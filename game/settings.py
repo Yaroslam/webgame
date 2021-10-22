@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'rest_framework',
     'import_export',
+    "django_unicorn",
+    'multiforloop',
 ]
 
 MIDDLEWARE = [
@@ -121,7 +123,9 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # blog_project/settings.py
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+IMPORT_EXPORT_USE_TRANSACTIONS = True
+LOGIN_REDIRECT_URL = 'game'
+LOGOUT_REDIRECT_URL = 'game'
+ADMIN_TOOLS_INDEX_DASHBOARD = 'game_app.dashboard.CustomIndexDashboard'
 
 

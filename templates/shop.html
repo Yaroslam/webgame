@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <div class="shop-container">
+            <div class="shop-item-1">
+                <div class = "item-shop-picture">
+                    <a href="{% url 'item_detail' object_list.0.item.pk  %}"><img src="{{ object_list.0.item_pic }}" alt="Picture"></a>
+                </div>
+                <button class = "item-shop-name">{{object_list.0.item.item_cost}}</button>
+            </div>
+
+            <div class="shop-item-2">
+              <div class = "item-shop-picture">
+                   <a href="{% url 'item_detail' object_list.1.item.pk %}"><img src="{{ object_list.1.item.item_pic }}" alt="Picture"></a>
+                </div>
+                <button class = "item-shop-name">{{object_list.1.item.item_cost}}</button>
+            </div>
+
+            <div class="shop-item-3">
+              <div class = "item-shop-picture">
+                  <a href="{% url 'item_detail' object_list.0.item.pk %}"><img src="{{ object_list.2.item_pic }}" alt="Picture"></a>
+                </div>
+                <button class = "item-shop-name">{{object_list.2.item_cost}}</button>
+            </div>
+        </div>
+
+        <div class="shop-container">
+            <div class="shop-item-1">
+                <div class = "item-shop-picture">
+                    <a href="{% url 'item_detail' object_list.0.item.pk  %}"><img src="{{ object_list.3.item_pic }}" alt="Picture"></a>
+                </div>
+                <button class = "item-shop-name">{{object_list.3.item_cost}}</button>
+            </div>
+
+{#            <div class="shop-item-2">#}
+{#              <div class = "item-shop-picture">#}
+{#                   <a href="{% url 'item_detail' object_list.4.pk %}"><img src="{{ object_list.4.item_pic }}" alt="Picture"></a>#}
+{#                </div>#}
+{#                <button class = "item-shop-name">{{object_list.4.cost}}</button>#}
+{#            </div>#}
+{##}
+{#            <div class="shop-item-3">#}
+{#              <div class = "item-shop-picture">#}
+{#                   <a href="{% url 'item_detail' object_list.5.pk %}"><img src="{{ object_list.5.item_pic }}" alt="Picture"></a>#}
+{#                </div>#}
+{#                <button class = "item-shop-name">{{object_list.5.cost}}</button>#}
+{#            </div>#}
+        </div>
+    </div>
+{% endblock content %}

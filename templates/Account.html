@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+    {%  for profiles in view.Profiles %}
+        {% if profiles.user == user %}
+            {% if profiles.is_hero == True %}
+                {% for heroes in object_list %}
+                    {% if heroes.owner == user %}
+                        <div>
+                            <div class="account-item-list">
+                             {% load multifor %}
+                                {% for item in heroes.hero_inventory.values ; item_slot in heroes.hero_inventory.keys %}
+                                    <p>{{ item_slot }} = {{ item }}</p>
+                                {% endfor %}
+                            </div>
+
+                            <div class="account-hero-wrapper">
+                                <div class="account-hero-img">
+                                    <img src="{{ heroes.hero_pic }}", alt="pic">
+                                </div>
+
+                                <div class="account-hero-desc">
+                                    <p>{{ heroes.hero_name }}</p>
+                                     <p>{{ heroes.hero_lvl }}</p>
+                                </div>
+                            </div>
+
+                         <div class="account-stats-list">
+                                {% load multifor %}
+                                {% for stats in heroes.hero_stats.values ; stats_name in heroes.hero_stats.keys %}
+
+                                    <p>{{ stats_name }} = {{stats}}</p>
+                                {% endfor %}
+
+                             </div>
+                        </div>
+                     {% endif %}
+                {% endfor %}
+            {% else %}
+                <div class="account-create-hero-btn-wrapper">
+                    <button class="account-create-hero-btn">Создать героя</button>
+                </div>
+
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </div>
+
+{% endblock content %}

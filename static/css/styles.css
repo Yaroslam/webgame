@@ -1,0 +1,191 @@
+.inline-div-place{
+      float: left; /*Задаем обтекание*/
+        line-height: 31px;/*Высота строки +  верт. центрирования текста*/
+       font-size: 48pt;
+        color: white;
+        width: 69px; /*Фиксируем ширину блока*/
+        margin-right: 270px;
+        text-align: center; /*Центрируем текст по горизонтали*/
+    }
+
+.inline-div-user-name{
+    float: left; /*Задаем обтекание*/
+        line-height: 31px;;/*Высота строки +  верт. центрирования текста*/
+        font-size: 48pt;
+        color: white;
+        width: 400px; /*Фиксируем ширину блока*/
+        margin-right: 245px;
+        text-align: center; /*Центрируем текст по горизонтали*/
+    }
+
+.inline-div-score{
+    float: left; /*Задаем обтекание*/
+    line-height: 31px;/*Высота строки +  верт. центрирования текста*/
+    font-size: 48pt;
+    color: white;
+    width: 320px; /*Фиксируем ширину блока*/
+    margin-right: 10px;
+    text-align: center; /*Центрируем текст по горизонтали*/
+    }
+
+.record-container{
+    border: dodgerblue;;
+    border-width: 2px 2px 2px 2px;
+    border-style: solid;
+    width: 1310px;/*фиксируем ширину обертки*/
+    margin: 0 auto;/*центрируем ее*/
+    background: darkgray;
+    height: 75px;/*Задаем высоту обертки*/
+}
+
+.record-container :last-child {
+        margin-right: 0px;/*Убираем поле последнего div-а*/
+                       }
+
+
+
+.shop-container{
+    border: dodgerblue;;
+    border-width: 2px 2px 2px 2px;
+    border-style: solid;
+    width: 1310px;/*фиксируем ширину обертки*/
+    margin: 0 auto;/*центрируем ее*/
+    background: darkgray;
+    margin-top: 20px;
+    height: 350px;/*Задаем высоту обертки*/
+    }
+.shop-container :last-child {
+        margin-right: 0px;/*Убираем поле последнего div-а*/
+                       }
+
+.shop-item-1{
+    font-size: 36pt;
+    color: white;
+    border: green;;
+    border-width: 2px 2px 2px 2px;
+    border-style: solid;
+    float: left; /*Задаем обтекание*/
+    height: 350px;
+    width: 350px;
+    margin-right: 127px;
+}
+
+.shop-item-2{
+    font-size: 36pt;
+    color: white;
+    border: green;;
+    border-width: 2px 2px 2px 2px;
+    border-style: solid;
+    float: left; /*Задаем обтекание*/
+    height: 350px;
+    width: 350px;
+    margin-right: 127px;
+}
+
+.shop-item-3{
+    font-size: 36pt;
+    color: white;
+    border: green;;
+    border-width: 2px 2px 2px 2px;
+    border-style: solid;
+    float: left; /*Задаем обтекание*/
+    height: 350px;
+    width: 350px;
+}
+
+.item-shop-picture{
+    margin-top: 14px;
+    margin-left: 50px;
+    background-color: black;
+    height: 250px;
+    width: 250px;
+}
+
+.item-shop-name{
+  position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: 5px;
+}
+
+
+.item-view-btn-img-wrapper{
+    float: left;
+}
+
+.item-view-picture{
+    margin-top: 0px;
+    margin-left: 145px;
+    background-color: black;
+    height: 420px;
+    width: 420px;
+}
+
+.item-view-button-wrapper{
+    height: 75px;
+    width: 230px;
+    margin-left: 240px;
+    margin-top: 10px
+}
+
+.item-view-button{
+    height: 75px;
+    width: 230px;
+}
+
+.item-view-description{
+    height: 800px;
+    width: 800px;
+    margin-left: 630px;
+    margin-top: 0px;
+}
+
+.account-hero-wrapper{
+    float: left;
+    background-color: yellow;
+    height: 790px;
+    width: 350px;
+    margin-left: 20px;
+
+}
+
+.account-hero-img{
+    margin-left: 25px;
+    height: 600px;
+    width: 300px;
+    background-color: gray;
+
+}
+
+.account-hero-desc{
+    text-align: center;
+
+}
+
+.account-item-list{
+    background-color: red;
+    float: left;
+    margin-left: 150px;
+    height: 800px;
+    width: 400px;
+}
+
+.account-stats-list{
+    background-color: blue;
+    float: left;
+    margin-left: 20px;
+    height: 800px;
+    width: 400px;
+}
+
+.account-create-hero-btn-wrapper{
+    margin-left:600px;
+    margin-top: 300px;
+    height:100%;
+    width: 100%;
+}
+
+.account-create-hero-btn{
+    height: 75px;
+    width: 230px;
+}

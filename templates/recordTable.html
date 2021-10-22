@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+    {% for record in object_list %}
+    <div class = "record-container">
+        <div class="inline-div-place">
+            <p>{{ forloop.counter }}</p>
+        </div>
+
+        <div class="inline-div-user-name">
+            <p>{{ record.user_name.username }}</p>
+        </div>
+
+        <div class="inline-div-score">
+            <p>{{ record.record }}</p>
+        </div>
+    </div>
+        <br>
+    {% endfor %}
+
+</div>
+{% endblock content %}

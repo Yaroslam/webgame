@@ -1,55 +1,68 @@
 from django.db import models
-from django.urls import reverse # Новый импорт
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
-class Post(models.Model):
-    title = models.CharField(max_length=200)
-    author = models.ForeignKey(
-        'auth.User',
-        on_delete=models.CASCADE,
-    )
-    body = models.TextField()
+#TODO add customUsers
 
-    def __str__(self):
-        return self.title
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    is_hero = models.BooleanField(default=False)
 
-    def get_absolute_url(self):  # Тут мы создали новый метод
-        return reverse('post_detail', args=[str(self.id)])
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+
 
 class OnGameUsers(models.Model):
     user_name = models.ForeignKey(
         'auth.User',
         on_delete=models.CASCADE,
     )
+    status = models.CharField(max_length=200, default='play')
 
     def __str__(self):
         return self.user_name.username
 
 class ShopList(models.Model):
-    item_mame = models.CharField(max_length=200)
-    item_pic = models.CharField(max_length=200)
-    item_cost = models.IntegerField()
+    item = models.OneToOneField('ItemList', on_delete=models.CASCADE, default=None)
 
     def __str__(self):
-        return (self.item_mame, self.item_cost, self.item_pic)
+        return self.item.item_mame
 
 class ItemList(models.Model):
     item_mame = models.CharField(max_length=200)
     item_pic = models.CharField(max_length=200)
     item_cost = models.IntegerField(max_length=200)
+    item_stats = models.JSONField( default= '')
 
     def __str__(self):
         return self.item_mame
 
 class RecordsList(models.Model):
-    user_name = models.CharField(max_length=200)
+    user_name = models.ForeignKey('auth.User',on_delete=models.CASCADE,)
     record = models.IntegerField()
 
-    def __str__(self):
-        return self.record
+    class Meta:
+        ordering = ["-record"]
 
-class HeroesList(models.Model):
-    owner =models.ForeignKey('auth.User',on_delete=models.CASCADE,)
+    def __str__(self):
+        return self.user_name.username
+
+class HeroesList(models.Model): #TODO
+    owner = models.ForeignKey('auth.User',on_delete=models.CASCADE,)
     hero_name = models.CharField(max_length=200)
+    hero_lvl = models.IntegerField(default=0)
+    hero_stats = models.JSONField(default= '')
+    hero_inventory = models.JSONField(default='')
+    hero_pic =  models.CharField(max_length=200, default='')
 
     def __str__(self):
         return self.hero_name

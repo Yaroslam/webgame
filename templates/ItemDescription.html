@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <div class="item-view-btn-img-wrapper">
+            <div class="item-view-picture">
+                <img src="{{ object.item_pic }}" alt="Picture">
+            </div>
+
+            <div class="item-view-button-wrapper">
+                <button class="item-view-button">{{ object.item_cost }}</button>
+            </div>
+        </div>
+
+        <div class="item-view-description">
+            <p>{{ object.item_mame }}</p>
+            {% if object.item_stats.button %}
+            <p>{{ object.item_stats.button }}</p>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock content %}

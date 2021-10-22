@@ -11,21 +11,21 @@ class OnGameUsersSerializer(serializers.ModelSerializer):
 
 
 class ShopListSerializer(serializers.ModelSerializer):
-    item_mame = serializers.CharField(required=True)
-    item_cost = serializers.IntegerField()
+    item = serializers.PrimaryKeyRelatedField(queryset='ItemList')
 
     class Meta:
         model = ShopList
-        fields = [' item_mame', 'item_cost ']
+        fields = ['item',]
 
 
 class ItemListSerializer(serializers.ModelSerializer):
     item_mame = serializers.CharField(required=True)
     item_cost = serializers.IntegerField()
+    item_stats = serializers.JSONField()
 
     class Meta:
         model = ItemList
-        fields = ['item_mame', 'item_cost ']
+        fields = ['item_mame', 'item_cost', 'item_stats']
 
 class RecordListSerializer(serializers.ModelSerializer):
     user_name = serializers.CharField(required=True)
