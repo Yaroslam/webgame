@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'import_export',
     "django_unicorn",
     'multiforloop',
+    'django_admin_json_editor',
 ]
 
 MIDDLEWARE = [
