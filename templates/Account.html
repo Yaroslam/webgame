@@ -40,7 +40,11 @@
                 {% endfor %}
             {% else %}
                 <div class="account-create-hero-btn-wrapper">
-                    <button class="account-create-hero-btn">Создать героя</button>
+                    <form action="" method="post">
+                            {% csrf_token %}
+                        {{ form.as_p }}
+                    <input  class="account-create-hero-btn" type="submit" value="Create Hero" />
+                        </form>
                 </div>
 
             {% endif %}

@@ -22,7 +22,8 @@ class ItemDescriptionView(DetailView):
     template_name = 'ItemDescription.html'
 
 class AccoutView(ListView):
-    model = HeroesList
+    model = Profile
+    fields = ['is_hero']
     template_name = 'Account.html'
 
     @staticmethod
