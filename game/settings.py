@@ -128,6 +128,5 @@ IMPORT_EXPORT_USE_TRANSACTIONS = True
 LOGIN_REDIRECT_URL = 'game'
 LOGOUT_REDIRECT_URL = 'game'
 ADMIN_TOOLS_INDEX_DASHBOARD = 'game_app.dashboard.CustomIndexDashboard'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
