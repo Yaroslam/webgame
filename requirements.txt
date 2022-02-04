@@ -1,2 +1,6 @@
 django
-gunicorn
+djangorestframework
+import_export
+django_unicorn
+django-multiforloop
+django_admin_json_editor
