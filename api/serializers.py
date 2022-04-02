@@ -1,9 +1,11 @@
 from rest_framework import serializers
 from game_app.models import *
+from rest_framework.validators import UniqueValidator
+from .validators import *
 
 
 class OnGameUsersSerializer(serializers.ModelSerializer):
-    user_name = serializers.CharField(required=True)
+    user_name = serializers.CharField(required=True, validators=[name_must_be_eng])
 
     class Meta:
         model = OnGameUsers
@@ -11,7 +13,7 @@ class OnGameUsersSerializer(serializers.ModelSerializer):
 
 
 class ShopListSerializer(serializers.ModelSerializer):
-    item = serializers.PrimaryKeyRelatedField(queryset='ItemList')
+    item = serializers.CharField(required=True, validators=[name_must_be_eng])
 
     class Meta:
         model = ShopList
@@ -19,17 +21,17 @@ class ShopListSerializer(serializers.ModelSerializer):
 
 
 class ItemListSerializer(serializers.ModelSerializer):
-    item_mame = serializers.CharField(required=True)
-    item_cost = serializers.IntegerField()
-    item_stats = serializers.JSONField()
+    item_mame = serializers.CharField(required=True, validators=[UniqueValidator(queryset=ItemList.objects.all()), name_must_be_eng])
+    item_cost = serializers.IntegerField(validators=[must_be_int])
+    item_stats = serializers.JSONField(validators=[not_null])
 
     class Meta:
         model = ItemList
         fields = ['item_mame', 'item_cost', 'item_stats']
 
 class RecordListSerializer(serializers.ModelSerializer):
-    user_name = serializers.CharField(required=True)
-    record = serializers.IntegerField(required=True)
+    user_name = serializers.CharField(required=True, validators=[name_must_be_eng])
+    record = serializers.IntegerField(required=True, validators=[must_be_int])
 
 
     class Meta:
@@ -38,8 +40,8 @@ class RecordListSerializer(serializers.ModelSerializer):
 
 
 class HeroListSerializer(serializers.ModelSerializer):
-    owner = serializers.PrimaryKeyRelatedField(queryset='auth.User')
-    hero_name = serializers.CharField(max_length=200)
+    owner = serializers.CharField(required=True, validators=[name_must_be_eng])
+    hero_name = serializers.CharField(max_length=200, validators=[name_must_be_eng])
 
     class Meta:
         model = HeroesList

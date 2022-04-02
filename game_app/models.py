@@ -70,7 +70,6 @@ class HeroesList(models.Model):
     hero_pic = models.CharField(max_length=200, default='')
 
     def __str__(self):
-        print(self.hero_name)
         return self.hero_name
 
 class LevelList(models.Model):

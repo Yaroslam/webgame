@@ -18,7 +18,7 @@
 
                             <div class="account-hero-wrapper">
                                 <div class="account-hero-img">
-                                    <img src="{{ heroes.hero_pic }}", alt="pic">
+                                    <img src="{{ heroes.hero_pic }}" alt="pic">
                                 </div>
 
                                 <div class="account-hero-desc">
@@ -42,7 +42,7 @@
                 <div class="account-create-hero-btn-wrapper">
                     <form action="" method="post">
                             {% csrf_token %}
-                        {{ form.as_p }}
+                        {{ profiles.as_p }}
                     <input  class="account-create-hero-btn" type="submit" value="Create Hero" />
                         </form>
                 </div>
