@@ -46,3 +46,5 @@ class HeroListSerializer(serializers.ModelSerializer):
     class Meta:
         model = HeroesList
         fields = ['owner', 'hero_name']
+
+
