@@ -5,13 +5,15 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'Items', ItemListListApiView)
-router.register(r'OnGme', OnGameListApiView)
 router.register(r'Shop', ShopListListApiView)
 router.register(r'Records', RecordsListApiView)
-router.register(r'Heroes', HeroesListApiView)
+router.register(r'OnGame', OnGameListApiView)
+router.register(r'Heroes', AllHeroesListApiView)
 
 
 
 
 
-urlpatterns = [url(r'^', include(router.urls)),]
+urlpatterns = [path('', include(router.urls)),
+               path('MyHeroes', LogUserHeroListApiView.as_view())
+               ]
