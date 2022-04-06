@@ -21,13 +21,14 @@ class ShopListSerializer(serializers.ModelSerializer):
 
 
 class ItemListSerializer(serializers.ModelSerializer):
-    item_mame = serializers.CharField(required=True, validators=[UniqueValidator(queryset=ItemList.objects.all()), name_must_be_eng])
+    item_name = serializers.CharField(required=True, validators=[UniqueValidator(queryset=ItemList.objects.all()), name_must_be_eng])
     item_cost = serializers.IntegerField(validators=[must_be_int])
     item_stats = serializers.JSONField(validators=[not_null])
 
     class Meta:
         model = ItemList
-        fields = ['item_mame', 'item_cost', 'item_stats']
+        fields = ['item_name', 'item_cost', 'item_stats']
+
 
 class RecordListSerializer(serializers.ModelSerializer):
     user_name = serializers.CharField(required=True, validators=[name_must_be_eng])

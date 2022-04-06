@@ -37,17 +37,17 @@ class ShopList(models.Model):
     item = models.OneToOneField('ItemList', on_delete=models.CASCADE, default=None)
 
     def __str__(self):
-        return self.item.item_mame
+        return self.item.item_name
 
 
 class ItemList(models.Model):
-    item_mame = models.CharField(max_length=200)
+    item_name = models.CharField(max_length=200)
     item_pic = models.CharField(max_length=200)
     item_cost = models.IntegerField(max_length=200)
     item_stats = models.JSONField(default='')
 
     def __str__(self):
-        return self.item_mame
+        return self.item_name
 
 
 class RecordsList(models.Model):

@@ -12,7 +12,7 @@ class ShopListAdmin(ImportExportModelAdmin):
 
 @admin.register(ItemList)
 class ItemListAdmin(ImportExportModelAdmin):
-    list_display = ('item_mame', 'item_pic', 'item_cost', 'item_stats')
+    list_display = ('item_name', 'item_pic', 'item_cost', 'item_stats')
 
 @admin.register(RecordsList)
 class RecordsAdmin(ImportExportModelAdmin):
