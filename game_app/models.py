@@ -3,6 +3,8 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from simple_history.models import HistoricalRecords
+from random import randint
 
 
 
@@ -39,15 +41,30 @@ class ShopList(models.Model):
     def __str__(self):
         return self.item.item_name
 
+    def clear_shop(self):
+        ShopList.objects.all().delete()
+
+    def add_to_shop(self, item):
+        new_item = ShopList()
+        new_item.item = item
+        new_item.save()
+
+
 
 class ItemList(models.Model):
     item_name = models.CharField(max_length=200)
     item_pic = models.CharField(max_length=200)
     item_cost = models.IntegerField(max_length=200)
     item_stats = models.JSONField(default='')
+    history = HistoricalRecords(history_change_reason_field=models.TextField(null=True))
 
     def __str__(self):
         return self.item_name
+
+    def random_item(self):
+        count = ItemList.objects.all().count()
+        random_index = randint(0, count - 1)
+        return ItemList.objects.all()[random_index]
 
 
 class RecordsList(models.Model):

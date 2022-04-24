@@ -32,10 +32,12 @@ INSTALLED_APPS = [
     "django_unicorn",
     'multiforloop',
     'django_admin_json_editor',
+    'simple_history',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

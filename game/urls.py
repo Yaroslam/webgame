@@ -8,3 +8,5 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path('game/', include('game_app.urls'), name='game'),
 ]
+
+import execute
