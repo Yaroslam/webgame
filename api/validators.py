@@ -17,6 +17,6 @@ def must_be_int(value):
 
 def name_must_be_eng(value):
     for i in value:
-        if ord(i) not in range(65, 91):
+        if ord(i) not in range(65, 91) and ord(i) not in range(96, 123):
             raise serializers.ValidationError('name must be written by eng letters')
     return value

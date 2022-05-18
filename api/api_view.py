@@ -3,7 +3,9 @@ from .serializers import *
 import django_filters.rest_framework
 from game_app.models import *
 from rest_framework import viewsets, generics
-
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from django.db.models import Q
 
 class OnGameListApiView(viewsets.ModelViewSet):
     serializer_class = OnGameUsersSerializer
@@ -18,6 +20,16 @@ class ShopListListApiView(viewsets.ModelViewSet):
 class ItemListListApiView(viewsets.ModelViewSet):
     serializer_class = ItemListSerializer
     queryset = ItemList.objects.all()
+
+    @action(methods=['GET'], detail=False)
+    def get_stats(self, request, **kwargs):
+        stats = ItemList.objects.values_list('item_stats', flat=True)
+        return Response(stats)
+
+    @action(methods=['DELETE'], detail=False)
+    def delete_all_swords(self, request, **kwargs):
+        swords = ItemList.objects.filter(Q(item_name__startswith="sword"))
+        return Response(swords.delete())
 
 
 class SingleItemListApiViewByGetParam(generics.ListAPIView):
