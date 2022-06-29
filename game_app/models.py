@@ -71,6 +71,11 @@ class RecordsList(models.Model):
     user_name = models.ForeignKey('auth.User', on_delete=models.CASCADE, )
     record = models.IntegerField()
 
+    def add_new_record(self, username, record):
+        self.user_name = User.objects.filter(username=username)[0]
+        self.record = record
+        self.save()
+
     class Meta:
         ordering = ["-record"]
 

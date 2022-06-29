@@ -19,6 +19,8 @@ def refill_shop():
     items = fill_shop_arr()
     for i in items:
         shop.add_to_shop(i)
+    is_item_real = len(ItemList.objects.filter(id=13)) >= 1
+    print(is_item_real)
+    print(ItemList.objects.filter(id=13)[0])
     print("i fiil")
-
 

@@ -13,11 +13,11 @@ class OnGameUsersSerializer(serializers.ModelSerializer):
 
 
 class ShopListSerializer(serializers.ModelSerializer):
-    item = serializers.CharField(required=True, validators=[name_must_be_eng])
+    item = serializers.CharField()
 
     class Meta:
         model = ShopList
-        fields = ['item',]
+        fields = ['item']
 
 
 class ItemListSerializer(serializers.ModelSerializer):
@@ -27,7 +27,7 @@ class ItemListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ItemList
-        fields = ['item_name', 'item_cost', 'item_stats']
+        fields = ['id', 'item_name', 'item_cost', 'item_stats']
 
 
 class RecordListSerializer(serializers.ModelSerializer):
