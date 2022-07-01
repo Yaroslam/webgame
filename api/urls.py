@@ -17,5 +17,6 @@ router.register(r'Heroes', AllHeroesListApiView)
 urlpatterns = [path('', include(router.urls)),
                path('MyHeroes', LogUserHeroListApiView.as_view()),
                path('Item', SingleItemListApiViewByGetParam.as_view()),
-               path('SearchHero', SearchHeroListApiView.as_view())
+               path('SearchHero', SearchHeroListApiView.as_view()),
+               path('Users', UsersListApiView.as_view()),
                ]

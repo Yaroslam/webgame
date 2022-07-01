@@ -2,6 +2,7 @@ from rest_framework import serializers
 from game_app.models import *
 from rest_framework.validators import UniqueValidator
 from .validators import *
+from django.contrib.auth.models import User
 
 
 class OnGameUsersSerializer(serializers.ModelSerializer):
@@ -47,5 +48,13 @@ class HeroListSerializer(serializers.ModelSerializer):
     class Meta:
         model = HeroesList
         fields = ['owner', 'hero_name']
+
+class UserSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(required=True)
+    id = serializers.IntegerField(required=True)
+
+    class Meta:
+        model = User
+        fields = ['username', 'id']
 
 
