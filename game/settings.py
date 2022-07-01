@@ -126,8 +126,5 @@ LOGIN_REDIRECT_URL = 'game'
 LOGOUT_REDIRECT_URL = 'game'
 ADMIN_TOOLS_INDEX_DASHBOARD = 'game_app.dashboard.CustomIndexDashboard'
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 2,
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
-
 }
