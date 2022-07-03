@@ -10,15 +10,16 @@ class OnGameUsersSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OnGameUsers
-        fields = ['user_name']
+        fields = ['user_name', 'id']
 
 
 class ShopListSerializer(serializers.ModelSerializer):
     item = serializers.CharField()
+    id = serializers.IntegerField()
 
     class Meta:
         model = ShopList
-        fields = ['item']
+        fields = ['item', 'id']
 
 
 class ItemListSerializer(serializers.ModelSerializer):
@@ -34,11 +35,12 @@ class ItemListSerializer(serializers.ModelSerializer):
 class RecordListSerializer(serializers.ModelSerializer):
     user_name = serializers.CharField(required=True, validators=[name_must_be_eng])
     record = serializers.IntegerField(required=True, validators=[must_be_int])
+    id = serializers.IntegerField(required=False)
 
 
     class Meta:
         model = RecordsList
-        fields = ['user_name', 'record']
+        fields = ['user_name', 'record', 'id']
 
 
 class HeroListSerializer(serializers.ModelSerializer):
@@ -47,7 +49,7 @@ class HeroListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = HeroesList
-        fields = ['owner', 'hero_name']
+        fields = ['owner', 'hero_name', 'id']
 
 class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=True)

@@ -22,7 +22,8 @@ class ShopListListApiView(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['POST'])
     def add_item(self, request, **kwargs):
-        item_to_add = int(self.request.POST['item'])
+        print(request.data['item'])
+        item_to_add = int(request.data['item'])
         is_item_real = len(ItemList.objects.filter(id=item_to_add)) >= 1
         if is_item_real:
             shop = ShopList()
@@ -66,11 +67,11 @@ class RecordsListApiView(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['POST'])
     def add_record(self, request, **kwargs):
-        user_to_add = self.request.POST['username']
+        user_to_add = request.data['username']
         is_user_real = len(User.objects.filter(username=user_to_add)) >= 1
         if is_user_real:
             new_rec = RecordsList()
-            new_rec.add_new_record(self.request.POST['username'],  self.request.POST['record'])
+            new_rec.add_new_record(request.data['username'],  request.data['record'])
         else:
             return Response({"Response": "User does not exist"})
         return Response({"Response": f"Record of {user_to_add} added successfully"})
